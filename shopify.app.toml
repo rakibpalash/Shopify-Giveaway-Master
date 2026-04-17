@@ -1,6 +1,6 @@
 name = "Giveaway Master"
 client_id = "d7617d613ba055cef18acc86d32d271c"
-application_url = "https://your-app.vercel.app"
+application_url = "https://giveaway-master.vercel.app"
 embedded = true
 
 [access_scopes]
@@ -9,9 +9,9 @@ scopes = "read_customers,write_customers,read_orders"
 
 [auth]
 redirect_urls = [
-  "https://your-app.vercel.app/auth/callback",
-  "https://your-app.vercel.app/auth/shopify/callback",
-  "https://your-app.vercel.app/api/auth/callback",
+  "https://giveaway-master.vercel.app/auth/callback",
+  "https://giveaway-master.vercel.app/auth/shopify/callback",
+  "https://giveaway-master.vercel.app/api/auth/callback",
   "http://localhost:3000/auth/callback",
   "http://localhost:3000/auth/shopify/callback"
 ]
