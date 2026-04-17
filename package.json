@@ -2,7 +2,7 @@
   "name": "giveaway-master",
   "private": true,
   "scripts": {
-    "build": "prisma generate && prisma migrate deploy && remix vite:build",
+    "build": "prisma generate && remix vite:build",
     "dev": "shopify app dev",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "setup": "prisma generate && prisma migrate deploy",
