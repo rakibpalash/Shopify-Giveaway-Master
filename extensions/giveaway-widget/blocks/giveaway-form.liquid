@@ -1,0 +1,135 @@
+{% comment %}
+  Giveaway Entry Widget — Theme App Extension Block
+  Add this block to any section via the Theme Editor.
+  Set the Giveaway ID from the app's giveaway detail page.
+{% endcomment %}
+
+{{ 'giveaway-widget.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="giveaway-widget"
+  data-giveaway-id="{{ block.settings.giveaway_id }}"
+  data-app-url="{{ block.settings.app_url }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="giveaway-widget__inner">
+    {% if block.settings.show_title and block.settings.title != blank %}
+      <h2 class="giveaway-widget__title">{{ block.settings.title }}</h2>
+    {% endif %}
+
+    {% if block.settings.description != blank %}
+      <p class="giveaway-widget__description">{{ block.settings.description }}</p>
+    {% endif %}
+
+    <div class="giveaway-widget__form-wrap">
+      <form class="giveaway-widget__form" id="giveaway-form-{{ block.id }}" novalidate>
+        <div class="giveaway-widget__field">
+          <label class="giveaway-widget__label" for="gw-name-{{ block.id }}">
+            Your Name <span aria-hidden="true">*</span>
+          </label>
+          <input
+            class="giveaway-widget__input"
+            type="text"
+            id="gw-name-{{ block.id }}"
+            name="customerName"
+            placeholder="Jane Smith"
+            required
+            minlength="2"
+            autocomplete="name"
+          />
+          <span class="giveaway-widget__field-error" aria-live="polite"></span>
+        </div>
+
+        <div class="giveaway-widget__field">
+          <label class="giveaway-widget__label" for="gw-email-{{ block.id }}">
+            Email Address <span aria-hidden="true">*</span>
+          </label>
+          <input
+            class="giveaway-widget__input"
+            type="email"
+            id="gw-email-{{ block.id }}"
+            name="customerEmail"
+            placeholder="jane@example.com"
+            required
+            autocomplete="email"
+          />
+          <span class="giveaway-widget__field-error" aria-live="polite"></span>
+        </div>
+
+        <button
+          class="giveaway-widget__submit"
+          type="submit"
+          data-loading-text="Entering..."
+        >
+          {{ block.settings.button_text | default: 'Enter Giveaway' }}
+        </button>
+
+        <div class="giveaway-widget__message" role="alert" aria-live="assertive" hidden></div>
+      </form>
+
+      <div class="giveaway-widget__success" hidden>
+        <p class="giveaway-widget__success-text">
+          {{ block.settings.success_message | default: "🎉 You're entered! Good luck!" }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'giveaway-widget.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Giveaway Entry Widget",
+  "target": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "giveaway_id",
+      "label": "Giveaway ID",
+      "info": "Copy the Giveaway ID from the giveaway detail page in the app."
+    },
+    {
+      "type": "url",
+      "id": "app_url",
+      "label": "App URL",
+      "info": "Your deployed app URL (e.g. https://your-app.vercel.app)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Widget Title",
+      "default": "Enter Our Giveaway!"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "info": "Optional short description shown above the form."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Enter Giveaway"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success Message",
+      "default": "🎉 You're entered! Good luck!"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Giveaway Entry Widget"
+    }
+  ]
+}
+{% endschema %}

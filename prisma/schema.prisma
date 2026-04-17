@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+}
+
+model Giveaway {
+  id          String   @id @default(cuid())
+  shop        String
+  title       String
+  description String?
+  prize       String
+  startDate   DateTime
+  endDate     DateTime
+  status      String   @default("draft")
+  winnerId    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  entries     Entry[]
+
+  @@index([shop])
+  @@index([status])
+}
+
+model Entry {
+  id            String   @id @default(cuid())
+  giveawayId    String
+  customerEmail String
+  customerName  String
+  entryMethod   String   @default("form")
+  ipAddress     String?
+  createdAt     DateTime @default(now())
+  giveaway      Giveaway @relation(fields: [giveawayId], references: [id], onDelete: Cascade)
+
+  @@unique([giveawayId, customerEmail])
+  @@index([giveawayId])
+}

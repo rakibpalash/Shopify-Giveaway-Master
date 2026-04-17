@@ -1,0 +1,130 @@
+.giveaway-widget {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.giveaway-widget *,
+.giveaway-widget *::before,
+.giveaway-widget *::after {
+  box-sizing: inherit;
+}
+
+.giveaway-widget__inner {
+  background: #fff;
+  border: 1px solid #e1e3e5;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 480px;
+}
+
+.giveaway-widget__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #1a1a1a;
+}
+
+.giveaway-widget__description {
+  font-size: 14px;
+  color: #6d7175;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+.giveaway-widget__field {
+  margin-bottom: 16px;
+}
+
+.giveaway-widget__label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.giveaway-widget__input {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #8c9196;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a1a1a;
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.giveaway-widget__input:focus {
+  border-color: #008060;
+  box-shadow: 0 0 0 2px rgba(0, 128, 96, 0.2);
+}
+
+.giveaway-widget__input[aria-invalid="true"] {
+  border-color: #d72c0d;
+}
+
+.giveaway-widget__field-error {
+  display: block;
+  font-size: 12px;
+  color: #d72c0d;
+  margin-top: 4px;
+  min-height: 16px;
+}
+
+.giveaway-widget__submit {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: #008060;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 8px;
+}
+
+.giveaway-widget__submit:hover {
+  background: #006e52;
+}
+
+.giveaway-widget__submit:disabled {
+  background: #95c9b4;
+  cursor: not-allowed;
+}
+
+.giveaway-widget__message {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.giveaway-widget__message--error {
+  background: #fff4f4;
+  color: #d72c0d;
+  border: 1px solid #f9c9c0;
+}
+
+.giveaway-widget__message--info {
+  background: #f1f8f5;
+  color: #008060;
+  border: 1px solid #a8d5c2;
+}
+
+.giveaway-widget__success {
+  text-align: center;
+  padding: 16px 0;
+}
+
+.giveaway-widget__success-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #008060;
+  margin: 0;
+}
